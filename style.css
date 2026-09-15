@@ -1,0 +1,340 @@
+/* --- VARIABLES DE COLOR (MODO CLARO Y OSCURO) --- */
+:root {
+  --bg-body: #f4f4f4;
+  --bg-card: #ffffff;
+  --bg-header: #ffffff;
+  --bg-banner: #336699;
+  --text-main: #333333;
+  --text-muted: #555555;
+  --text-title: #1a2a44;
+  --text-banner: #ffffff;
+  --accent-color: #336699;
+  --badge-bg: #ebf8ff;
+  --badge-text: #2b6cb0;
+  --border-color: #e2e8f0;
+  --shadow-color: rgba(0, 0, 0, 0.1);
+  --accordion-bg: #f8fafc;
+}
+
+[data-theme="dark"] {
+  --bg-body: #0f172a;
+  --bg-card: #1e293b;
+  --bg-header: #1e293b;
+  --bg-banner: #1e3a8a;
+  --text-main: #e2e8f0;
+  --text-muted: #cbd5e1;
+  --text-title: #93c5fd;
+  --text-banner: #ffffff;
+  --accent-color: #60a5fa;
+  --badge-bg: #1e3a8a;
+  --badge-text: #93c5fd;
+  --border-color: #334155;
+  --shadow-color: rgba(0, 0, 0, 0.5);
+  --accordion-bg: #0f172a;
+}
+
+/* --- ESTILOS GENERALES --- */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: var(--bg-body);
+  color: var(--text-main);
+  min-height: 100vh;
+  padding: 20px;
+}
+
+/* --- BARRA SUPERIOR DE ACCIONES --- */
+.bar-acciones {
+  max-width: 1000px;
+  margin: 0 auto 20px auto;
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+.btn-accion {
+  border: none;
+  padding: 10px 18px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  font-family: 'Poppins', sans-serif;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 4px 10px var(--shadow-color);
+  transition: transform 0.1s ease, opacity 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn-accion:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+}
+
+.btn-descargar {
+  background-color: var(--accent-color);
+  color: #ffffff;
+}
+
+.btn-tema {
+  background-color: var(--bg-card);
+  color: var(--text-main);
+  border: 1px solid var(--border-color);
+}
+
+/* --- CONTENEDOR PRINCIPAL --- */
+.hoja-vida-container {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  background-color: var(--bg-card);
+  box-shadow: 0 10px 25px var(--shadow-color);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* --- SECCIÓN DE PRESENTACIÓN --- */
+.seccion-presentacion {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 50px 60px;
+  background-color: var(--bg-header);
+}
+
+.info-personal {
+  flex: 1;
+  padding-right: 40px;
+}
+
+.nombre {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--text-title);
+  line-height: 1.1;
+  margin-bottom: 10px;
+}
+
+.titulo {
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: var(--text-muted);
+}
+
+/* Foto de Perfil */
+.foto-contenedor {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 5px solid var(--bg-card);
+  box-shadow: 0 5px 15px var(--shadow-color);
+  flex-shrink: 0;
+}
+
+.foto-perfil {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* --- BANNER DE CONTACTO AZUL --- */
+.banner-contacto {
+  background-color: var(--bg-banner);
+  color: var(--text-banner);
+  padding: 20px 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  flex-wrap: wrap;
+  font-size: 0.95rem;
+}
+
+.dato {
+  white-space: nowrap;
+}
+
+.separador {
+  opacity: 0.5;
+}
+
+/* --- NAVEGACIÓN POR PESTAÑAS --- */
+.tabs-nav {
+  display: flex;
+  background-color: var(--accordion-bg);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.tab-btn {
+  flex: 1;
+  padding: 15px;
+  border: none;
+  background: none;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  cursor: pointer;
+  border-bottom: 3px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.tab-btn:hover {
+  color: var(--accent-color);
+}
+
+.tab-btn.active {
+  color: var(--accent-color);
+  border-bottom-color: var(--accent-color);
+  background-color: var(--bg-card);
+}
+
+/* --- CONTENIDO PRINCIPAL --- */
+.contenido {
+  padding: 40px 60px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.tab-pane {
+  display: none;
+}
+
+.tab-pane.active {
+  display: block;
+}
+
+.seccion-titulo {
+  font-size: 1.3rem;
+  color: var(--text-title);
+  border-bottom: 2px solid var(--border-color);
+  padding-bottom: 8px;
+  margin-bottom: 18px;
+  font-weight: 600;
+}
+
+/* --- BARRAS DESPLEGABLES (DETAILS / SUMMARY) --- */
+details {
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  margin-bottom: 12px;
+  background-color: var(--bg-card);
+  overflow: hidden;
+}
+
+summary {
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--text-title);
+  padding: 14px 20px;
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--accordion-bg);
+  user-select: none;
+}
+
+summary::-webkit-details-marker {
+  display: none;
+}
+
+summary::after {
+  content: "▼";
+  font-size: 0.8rem;
+  color: var(--accent-color);
+  transition: transform 0.3s ease;
+}
+
+details[open] summary::after {
+  transform: rotate(180deg);
+}
+
+.desplegable-contenido {
+  padding: 18px 20px;
+  border-top: 1px solid var(--border-color);
+}
+
+.item {
+  margin-bottom: 15px;
+}
+
+.item-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.fecha {
+  font-size: 0.85rem;
+  color: var(--badge-text);
+  font-weight: 600;
+  background-color: var(--badge-bg);
+  padding: 3px 10px;
+  border-radius: 12px;
+}
+
+.referencia-card {
+  margin-bottom: 10px;
+}
+
+.referencia-nombre {
+  font-weight: 600;
+  color: var(--text-main);
+}
+
+.referencia-parentesco {
+  font-size: 0.85rem;
+  color: var(--accent-color);
+}
+
+/* --- RESPONSIVIDAD MÓVIL --- */
+@media (max-width: 768px) {
+  .seccion-presentacion {
+    flex-direction: column-reverse;
+    padding: 40px 20px;
+    text-align: center;
+  }
+
+  .info-personal {
+    padding-right: 0;
+    margin-top: 25px;
+  }
+
+  .nombre {
+    font-size: 2rem;
+  }
+
+  .foto-contenedor {
+    width: 160px;
+    height: 160px;
+  }
+
+  .contenido {
+    padding: 25px 20px;
+  }
+
+  .tabs-nav {
+    flex-direction: column;
+  }
+}
+
+/* --- FORMATO IMPRESIÓN / PDF --- */
+@media print {
+  body { background-color: #ffffff; padding: 0; }
+  .bar-acciones, .tabs-nav { display: none; }
+  .tab-pane { display: block !important; margin-bottom: 20px; }
+  .hoja-vida-container { box-shadow: none; max-width: 100%; }
+  summary::after { display: none; }
+  .desplegable-contenido { display: block !important; }
+}

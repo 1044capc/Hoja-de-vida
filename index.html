@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hoja de Vida - Carlos Amin Paternina Cantillo</title>
+  
+  <!-- Fuente Poppins -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Estilos CSS Externos -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- BARRA DE ACCIONES SUPERIOR -->
+  <div class="bar-acciones">
+    <button id="btnTema" class="btn-accion btn-tema">🌙 Modo Oscuro</button>
+    <button onclick="window.print()" class="btn-accion btn-descargar">📄 Exportar Hoja de Vida (PDF)</button>
+  </div>
+
+  <!-- CONTENEDOR PRINCIPAL CV -->
+  <div class="hoja-vida-container">
+
+    <!-- CABECERA / PRESENTACIÓN -->
+    <header class="seccion-presentacion">
+      <div class="info-personal">
+        <h1 class="nombre">CARLOS AMIN<br>PATERNINA CANTILLO</h1>
+        <p class="titulo">Ingeniero de Software - Universidad de Cartagena</p>
+      </div>
+      <div class="foto-contenedor">
+        <img src="foto.jpg" alt="Foto de perfil de Carlos Amin Paternina Cantillo" class="foto-perfil">
+      </div>
+    </header>
+
+    <!-- BANNER DE CONTACTO -->
+    <div class="banner-contacto">
+      <div class="dato">📧 carlosaminpc@hotmail.com</div>
+      <span class="separador">|</span>
+      <div class="dato">📱 +57 3137720951</div>
+      <span class="separador">|</span>
+      <div class="dato">📍 Arjona, Bolívar, Colombia</div>
+    </div>
+
+    <!-- NAVEGACIÓN POR PESTAÑAS -->
+    <nav class="tabs-nav">
+      <button class="tab-btn active" onclick="cambiarPestana(event, 'perfil')">Perfil & Datos Personales</button>
+      <button class="tab-btn" onclick="cambiarPestana(event, 'estudios')">Formación Académica</button>
+      <button class="tab-btn" onclick="cambiarPestana(event, 'cursos')">Cursos y Certificados</button>
+      <button class="tab-btn" onclick="cambiarPestana(event, 'referencias')">Referencias</button>
+    </nav>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <main class="contenido">
+
+      <!-- PESTAÑA 1: PERFIL Y DATOS PERSONALES -->
+      <section id="perfil" class="tab-pane active">
+        <h2 class="seccion-titulo">Perfil Profesional</h2>
+        <p style="margin-bottom: 20px;">
+          Ingeniero de Software apasionado por el desarrollo de aplicaciones web, la resolución de problemas lógicos y el trabajo en equipo. Orientado al logro de resultados eficaces, aprendizaje continuo y aplicación de mejores prácticas de programación.
+        </p>
+
+        <h2 class="seccion-titulo">Información Personal</h2>
+        <div class="desplegable-contenido" style="border: 1px solid var(--border-color); border-radius: 8px;">
+          <div class="item">
+            <strong>Nombre completo:</strong> Carlos Amin Paternina Cantillo
+          </div>
+          <div class="item">
+            <strong>Documento de Identidad:</strong> C.C. 1.044.930.264 de Arjona Bolivar
+          </div>
+          <div class="item">
+            <strong>Fecha de Nacimiento:</strong> 20 de Septiembre de 1995
+          </div>
+          <div class="item">
+            <strong>Lugar de Nacimiento:</strong> Arjona, Bolívar, Colombia
+          </div>
+          <div class="item">
+            <strong>Dirección de Residencia:</strong> Barrio el olivo - Arjona Bolívar - Colombia
+          </div>
+          <div class="item">
+            <strong>Teléfono / WhatsApp:</strong> +57 313 772 0951
+          </div>
+          <div class="item">
+            <strong>Correo Electrónico:</strong> carlosaminpc@hotmail.com
+          </div>
+        </div>
+      </section>
+
+      <!-- PESTAÑA 2: FORMACIÓN ACADÉMICA -->
+      <section id="estudios" class="tab-pane">
+        <h2 class="seccion-titulo">Estudios Realizados</h2>
+
+        <div class="item">
+          <div class="item-header">
+            <h3>Ingeniería de Software</h3>
+            <span class="fecha">En Curso</span>
+          </div>
+          <p class="referencia-parentesco">Universidad de Cartagena</p>
+          <p class="item-descripcion" style="margin-top: 5px;">
+            Formación enfocada en desarrollo web, bases de datos, arquitectura de software y metodologías ágiles.
+          </p>
+        </div>
+
+        <hr style="border:0; border-top:1px dashed var(--border-color); margin: 15px 0;">
+
+        <div class="item">
+          <div class="item-header">
+            <h3>Bachiller Académico</h3>
+            <span class="fecha">Graduado</span>
+          </div>
+          <p class="referencia-parentesco">Instituto Bolivario - Año 2012</p>
+        </div>
+      </section>
+
+      <<!-- PESTAÑA 3: CURSOS Y CERTIFICADOS -->
+      <section id="cursos" class="tab-pane">
+        <h2 class="seccion-titulo">Cursos y Certificaciones</h2>
+
+        <details open>
+          <summary>📜 Ver Formación Adicional y Certificados</summary>
+          <div class="desplegable-contenido">
+            
+            <!-- Curso 1 (Con PDF) -->
+            <div class="item">
+              <div class="item-header">
+                <h3>Contabilidad de Inventarios</h3>
+                <span class="fecha">40 horas - 04/12/2014</span>
+              </div>
+              <p class="referencia-parentesco">Servicio Nacional de Aprendizaje (SENA) - Regional Bolívar</p>
+              <p class="item-descripcion" style="margin-top: 5px;">
+                Registro SENA No. 930400894615CC1044930264C.
+              </p>
+              <div style="margin-top: 10px; display: flex; gap: 10px;">
+                <a href="contabilidad.pdf" download="Certificado_Contabilidad_Carlos_Paternina.pdf" class="btn-accion btn-descargar" style="text-decoration: none; display: inline-flex; font-size: 0.85rem; padding: 6px 14px;">
+                  📥 Descargar PDF
+                </a>
+                <a href="contabilidad.pdf" target="_blank" class="btn-accion btn-tema" style="text-decoration: none; display: inline-flex; font-size: 0.85rem; padding: 6px 14px;">
+                  👁️ Ver Certificado
+                </a>
+              </div>
+            </div>
+
+            <hr style="border:0; border-top:1px dashed var(--border-color); margin: 15px 0;">
+
+            <!-- Curso 2 (Con PDF) -->
+            <div class="item">
+              <div class="item-header">
+                <h3>Emprendimiento Empresarial</h3>
+                <span class="fecha">40 horas - 05/03/2015</span>
+              </div>
+              <p class="referencia-parentesco">Servicio Nacional de Aprendizaje (SENA) Regional Bolívar</p>
+              <p class="item-descripcion" style="margin-top: 5px;">
+                Registro SENA No. 910400911445CC1044930264E.
+              </p>
+              <div style="margin-top: 10px; display: flex; gap: 10px;">
+                <a href="emprendimiento.pdf" download="Certificado_Emprendimiento_Carlos_Paternina.pdf" class="btn-accion btn-descargar" style="text-decoration: none; display: inline-flex; font-size: 0.85rem; padding: 6px 14px;">
+                  📥 Descargar PDF
+                </a>
+                <a href="emprendimiento.pdf" target="_blank" class="btn-accion btn-tema" style="text-decoration: none; display: inline-flex; font-size: 0.85rem; padding: 6px 14px;">
+                  👁️ Ver Certificado
+                </a>
+              </div>
+            </div>
+
+            <hr style="border:0; border-top:1px dashed var(--border-color); margin: 15px 0;">
+
+            <!-- Curso 3 (Con PDF) -->
+            <div class="item">
+              <div class="item-header">
+                <h3>Básico Salud Ocupacional</h3>
+                <span class="fecha">40 horas - 13/04/2015</span>
+              </div>
+              <p class="referencia-parentesco">Servicio Nacional de Aprendizaje (SENA) - Regional Bolivar</p>
+              <p class="item-descripcion" style="margin-top: 5px;">
+                Registro SENA No. 930400940346CC1044930264C.
+              </p>
+              <div style="margin-top: 10px; display: flex; gap: 10px;">
+                <a href="salud_ocupacional.pdf" download="Certificado_Salud_Ocupacional_Carlos_Paternina.pdf" class="btn-accion btn-descargar" style="text-decoration: none; display: inline-flex; font-size: 0.85rem; padding: 6px 14px;">
+                  📥 Descargar PDF
+                </a>
+                <a href="salud_ocupacional.pdf" target="_blank" class="btn-accion btn-tema" style="text-decoration: none; display: inline-flex; font-size: 0.85rem; padding: 6px 14px;">
+                  👁️ Ver Certificado
+                </a>
+              </div>
+            </div>
+
+            <hr style="border:0; border-top:1px dashed var(--border-color); margin: 15px 0;">
+
+            <!-- CURSO ADICIONAL (SIN BOTONES DE PDF) -->
+            <div class="item">
+              <div class="item-header">
+                <h3>Mantenimiento de Computadores</h3>
+                <span class="fecha">60 horas - 2026</span>
+              </div>
+              <p class="referencia-parentesco">Servicio Nacional de Aprendizaje (SENA) - Regional Bolivar - En curso</p>
+              <p class="item-descripcion" style="margin-top: 5px;">
+                Formación en mantenimiento preventivo y correctivo de equipos de cómputo.
+              </p>
+            </div>
+
+          </div>
+        </details>
+      </section>
+<!-- PESTAÑA 4: REFERENCIAS -->
+      <section id="referencias" class="tab-pane">
+        <h2 class="seccion-titulo">Referencias</h2>
+
+        <!-- Referencias Familiares (Mismo formato con desplegable <details>) -->
+        <details open>
+          <summary>👨‍👩‍👦 Referencias Familiares</summary>
+          <div class="desplegable-contenido">
+            
+            <div class="referencia-card">
+              <p class="referencia-nombre">Rosana Cantillo Diaz</p>
+              <p class="referencia-parentesco">Fisioterapeuta (Madre)</p>
+              <p class="referencia-detalles">Tel: +57 324 389 9075 - Email: rosanacantillod@gmail.com</p>
+            </div>
+
+            <hr style="border:0; border-top:1px dashed var(--border-color); margin: 10px 0;">
+
+            <div class="referencia-card">
+              <p class="referencia-nombre">Jesus Paternina Cantillo</p>
+              <p class="referencia-parentesco">Ingeniero Químico (Hermano)</p>
+              <p class="referencia-detalles">Tel: +57 315 531 5631 - Email: jedapaca@gmail.com</p>
+            </div>
+
+          </div>
+        </details>
+
+        <!-- Referencias Personales -->
+        <details>
+          <summary>🤝 Referencias Personales</summary>
+          <div class="desplegable-contenido">
+            
+            <div class="referencia-card">
+              <p class="referencia-nombre">Rosa Isabel Berdugo Diaz</p>
+              <p class="referencia-parentesco">Licenciada en Castellano</p>
+              <p class="referencia-detalles">Tel: +57 320 689 4339 - Email: rosaisabelbd@gmail.com</p>
+            </div>
+
+            <hr style="border:0; border-top:1px dashed var(--border-color); margin: 10px 0;">
+
+            <div class="referencia-card">
+              <p class="referencia-nombre">Ana Maria Barros Guardo</p>
+              <p class="referencia-parentesco">Auxiliar Contable</p>
+              <p class="referencia-detalles">Tel: +57 300 704 1098 - Email: anabg89@hotmail.com</p>
+            </div>
+
+          </div>
+        </details>
+      </section>
+
+    </main>
+
+  </div>
+
+  <!-- JavaScript Externo -->
+  <script src="script.js"></script>
+</body>
+</html>
