@@ -1,260 +1,312 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" data-bs-theme="light">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Hoja de Vida - Carlos Amin Paternina Cantillo</title>
   
-  <!-- Fuente Poppins -->
+  <!-- Fonts & Icons -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   
-  <!-- Estilos CSS Externos -->
+  <!-- Bootstrap 5.3 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  
+  <!-- Animate.css para animaciones -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+  
+  <!-- Estilos CSS Personalizados -->
   <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="bg-body-tertiary">
 
   <!-- BARRA DE ACCIONES SUPERIOR -->
-  <div class="bar-acciones">
-    <button id="btnTema" class="btn-accion btn-tema">🌙 Modo Oscuro</button>
-    <button onclick="window.print()" class="btn-accion btn-descargar">📄 Exportar Hoja de Vida (PDF)</button>
+  <div class="container max-w-1000 my-3">
+    <div class="d-flex justify-content-end gap-2">
+      <button id="btnTema" class="btn btn-outline-secondary d-flex align-items-center gap-2">
+        <i class="bi bi-moon-stars-fill"></i> <span>Modo Oscuro</span>
+      </button>
+      <button onclick="window.print()" class="btn btn-primary d-flex align-items-center gap-2">
+        <i class="bi bi-file-earmark-pdf-fill"></i> <span>Exportar Hoja de Vida (PDF)</span>
+      </button>
+    </div>
   </div>
 
   <!-- CONTENEDOR PRINCIPAL CV -->
-  <div class="hoja-vida-container">
+  <div class="container max-w-1000 bg-body rounded-4 shadow-lg overflow-hidden p-0 mb-5 animate__animated animate__fadeIn">
 
     <!-- CABECERA / PRESENTACIÓN -->
-    <header class="seccion-presentacion">
-      <div class="info-personal">
-        <h1 class="nombre">CARLOS AMIN<br>PATERNINA CANTILLO</h1>
-        <p class="titulo">Ingeniero de Software - Universidad de Cartagena</p>
-      </div>
-      <div class="foto-contenedor">
-        <img src="foto.jpg" alt="Foto de perfil de Carlos Amin Paternina Cantillo" class="foto-perfil">
+    <header class="p-4 p-md-5 bg-body-secondary border-bottom">
+      <div class="row align-items-center gy-4">
+        <div class="col-12 col-md-8 text-center text-md-start">
+          <h1 class="fw-bold text-uppercase display-6 text-primary mb-1">Carlos Amin<br>Paternina Cantillo</h1>
+          <p class="fs-5 text-secondary fw-semibold mb-0">Ingeniero de Software</p>
+        </div>
+        <div class="col-12 col-md-4 text-center">
+          <img src="foto.jpg" alt="Carlos Amin Paternina Cantillo" class="rounded-circle border border-4 border-primary shadow-sm" style="width: 160px; height: 160px; object-fit: cover;">
+        </div>
       </div>
     </header>
 
     <!-- BANNER DE CONTACTO -->
-    <div class="banner-contacto">
-      <div class="dato">📧 carlosaminpc@hotmail.com</div>
-      <span class="separador">|</span>
-      <div class="dato">📱 +57 3137720951</div>
-      <span class="separador">|</span>
-      <div class="dato">📍 Arjona, Bolívar, Colombia</div>
+    <div class="bg-primary text-white py-3 px-4 text-center">
+      <div class="d-flex flex-wrap justify-content-center gap-3 fs-6">
+        <div><i class="bi bi-envelope-fill me-1"></i> carlosaminpc@hotmail.com</div>
+        <span class="d-none d-md-inline">|</span>
+        <div><i class="bi bi-telephone-fill me-1"></i> +57 3137720951</div>
+        <span class="d-none d-md-inline">|</span>
+        <div><i class="bi bi-geo-alt-fill me-1"></i> Arjona Bolívar - Colombia</div>
+      </div>
     </div>
 
-    <!-- NAVEGACIÓN POR PESTAÑAS -->
-    <nav class="tabs-nav">
-      <button class="tab-btn active" onclick="cambiarPestana(event, 'perfil')">Perfil & Datos Personales</button>
-      <button class="tab-btn" onclick="cambiarPestana(event, 'estudios')">Formación Académica</button>
-      <button class="tab-btn" onclick="cambiarPestana(event, 'cursos')">Cursos y Certificados</button>
-      <button class="tab-btn" onclick="cambiarPestana(event, 'referencias')">Referencias</button>
+    <!-- NAVEGACIÓN POR PESTAÑAS (BOOTSTRAP NAV TABS) -->
+    <nav class="bg-body-tertiary border-bottom">
+      <div class="nav nav-tabs nav-justified" id="cv-tabs" role="tablist">
+        <button class="nav-link active fw-semibold" id="perfil-tab" data-bs-toggle="tab" data-bs-target="#perfil" type="button" role="tab">Perfil & Datos</button>
+        <button class="nav-link fw-semibold" id="estudios-tab" data-bs-toggle="tab" data-bs-target="#estudios" type="button" role="tab">Estudios</button>
+        <button class="nav-link fw-semibold" id="cursos-tab" data-bs-toggle="tab" data-bs-target="#cursos" type="button" role="tab">Cursos & Certificados</button>
+        <button class="nav-link fw-semibold" id="referencias-tab" data-bs-toggle="tab" data-bs-target="#referencias" type="button" role="tab">Referencias</button>
+        <button class="nav-link fw-semibold" id="contacto-tab" data-bs-toggle="tab" data-bs-target="#contacto" type="button" role="tab">Contacto</button>
+      </div>
     </nav>
 
     <!-- CONTENIDO PRINCIPAL -->
-    <main class="contenido">
+    <main class="tab-content p-4 p-md-5" id="cv-tabContent">
 
       <!-- PESTAÑA 1: PERFIL Y DATOS PERSONALES -->
-      <section id="perfil" class="tab-pane active">
-        <h2 class="seccion-titulo">Perfil Profesional</h2>
-        <p style="margin-bottom: 20px;">
-          Ingeniero de Software apasionado por el desarrollo de aplicaciones web, la resolución de problemas lógicos y el trabajo en equipo. Orientado al logro de resultados eficaces, aprendizaje continuo y aplicación de mejores prácticas de programación.
+      <div class="tab-pane fade show active" id="perfil" role="tabpanel">
+        <h4 class="border-bottom pb-2 mb-3 text-primary"><i class="bi bi-person-lines-fill me-2"></i>Perfil Profesional</h4>
+        <p class="text-secondary lead fs-6">
+          Futuro ingeniero de Software apasionado por el desarrollo de aplicaciones web, la resolución de problemas lógicos y el trabajo en equipo. Orientado al logro de resultados eficaces, aprendizaje continuo y aplicación de mejores prácticas de programación.
         </p>
 
-        <h2 class="seccion-titulo">Información Personal</h2>
-        <div class="desplegable-contenido" style="border: 1px solid var(--border-color); border-radius: 8px;">
-          <div class="item">
-            <strong>Nombre completo:</strong> Carlos Amin Paternina Cantillo
-          </div>
-          <div class="item">
-            <strong>Documento de Identidad:</strong> C.C. 1.044.930.264 de Arjona Bolivar
-          </div>
-          <div class="item">
-            <strong>Fecha de Nacimiento:</strong> 20 de Septiembre de 1995
-          </div>
-          <div class="item">
-            <strong>Lugar de Nacimiento:</strong> Arjona, Bolívar, Colombia
-          </div>
-          <div class="item">
-            <strong>Dirección de Residencia:</strong> Barrio el olivo - Arjona Bolívar - Colombia
-          </div>
-          <div class="item">
-            <strong>Teléfono / WhatsApp:</strong> +57 313 772 0951
-          </div>
-          <div class="item">
-            <strong>Correo Electrónico:</strong> carlosaminpc@hotmail.com
-          </div>
+        <h4 class="border-bottom pb-2 my-4 text-primary"><i class="bi bi-card-heading me-2"></i>Información Personal</h4>
+        <div class="card card-body bg-body-tertiary border-0 shadow-sm">
+          <ul class="list-group list-group-flush bg-transparent">
+            <li class="list-group-item bg-transparent"><strong>Nombre completo:</strong> Carlos Amin Paternina Cantillo</li>
+            <li class="list-group-item bg-transparent"><strong>Documento de Identidad:</strong> C.C. 1.044.930.264 de Arjona Bolivar</li>
+            <li class="list-group-item bg-transparent"><strong>Fecha de Nacimiento:</strong> 20 de Septiembre de 1995</li>
+            <li class="list-group-item bg-transparent"><strong>Lugar de Nacimiento:</strong> Arjona Bolívar - Colombia</li>
+            <li class="list-group-item bg-transparent"><strong>Dirección:</strong> Arjona Bolívar carrera 72 # 40-72 - Colombia</li>
+          </ul>
         </div>
-      </section>
+      </div>
 
       <!-- PESTAÑA 2: FORMACIÓN ACADÉMICA -->
-      <section id="estudios" class="tab-pane">
-        <h2 class="seccion-titulo">Estudios Realizados</h2>
+      <div class="tab-pane fade" id="estudios" role="tabpanel">
+        <h4 class="border-bottom pb-2 mb-4 text-primary"><i class="bi bi-journal-bookmark-fill me-2"></i>Estudios Realizados</h4>
 
-        <div class="item">
-          <div class="item-header">
-            <h3>Ingeniería de Software</h3>
-            <span class="fecha">En Curso</span>
+        <div class="card mb-3 border-0 shadow-sm bg-body-tertiary">
+          <div class="card-body">
+            <div class="d-flex justify-content-between align-items-center flex-wrap">
+              <h5 class="card-title fw-bold mb-1">Ingeniería de Software</h5>
+              <span class="badge bg-primary fs-6">En Curso</span>
+            </div>
+            <h6 class="card-subtitle text-muted mb-2">Universidad de Cartagena</h6>
+            <p class="card-text text-secondary mb-0">Formación enfocada en desarrollo web, bases de datos, arquitectura de software y metodologías ágiles.</p>
           </div>
-          <p class="referencia-parentesco">Universidad de Cartagena</p>
-          <p class="item-descripcion" style="margin-top: 5px;">
-            Formación enfocada en desarrollo web, bases de datos, arquitectura de software y metodologías ágiles.
-          </p>
         </div>
 
-        <hr style="border:0; border-top:1px dashed var(--border-color); margin: 15px 0;">
-
-        <div class="item">
-          <div class="item-header">
-            <h3>Bachiller Académico</h3>
-            <span class="fecha">Graduado</span>
+        <div class="card border-0 shadow-sm bg-body-tertiary">
+          <div class="card-body">
+            <div class="d-flex justify-content-between align-items-center flex-wrap">
+              <h5 class="card-title fw-bold mb-1">Bachiller Académico</h5>
+              <span class="badge bg-secondary fs-6">Graduado</span>
+            </div>
+            <h6 class="card-subtitle text-muted mb-0">Instituto Bolivariano de Arjona Bolivar - Año 2012</h6>
           </div>
-          <p class="referencia-parentesco">Instituto Bolivario - Año 2012</p>
         </div>
-      </section>
+      </div>
 
-      <<!-- PESTAÑA 3: CURSOS Y CERTIFICADOS -->
-      <section id="cursos" class="tab-pane">
-        <h2 class="seccion-titulo">Cursos y Certificaciones</h2>
+      <!-- PESTAÑA 3: CURSOS Y CERTIFICADOS -->
+      <div class="tab-pane fade" id="cursos" role="tabpanel">
+        <h4 class="border-bottom pb-2 mb-4 text-primary"><i class="bi bi-award-fill me-2"></i>Cursos y Certificaciones SENA</h4>
 
-        <details open>
-          <summary>📜 Ver Formación Adicional y Certificados</summary>
-          <div class="desplegable-contenido">
-            
-            <!-- Curso 1 (Con PDF) -->
-            <div class="item">
-              <div class="item-header">
-                <h3>Contabilidad de Inventarios</h3>
-                <span class="fecha">40 horas - 04/12/2014</span>
-              </div>
-              <p class="referencia-parentesco">Servicio Nacional de Aprendizaje (SENA) - Regional Bolívar</p>
-              <p class="item-descripcion" style="margin-top: 5px;">
-                Registro SENA No. 930400894615CC1044930264C.
-              </p>
-              <div style="margin-top: 10px; display: flex; gap: 10px;">
-                <a href="contabilidad.pdf" download="Certificado_Contabilidad_Carlos_Paternina.pdf" class="btn-accion btn-descargar" style="text-decoration: none; display: inline-flex; font-size: 0.85rem; padding: 6px 14px;">
-                  📥 Descargar PDF
-                </a>
-                <a href="contabilidad.pdf" target="_blank" class="btn-accion btn-tema" style="text-decoration: none; display: inline-flex; font-size: 0.85rem; padding: 6px 14px;">
-                  👁️ Ver Certificado
-                </a>
+        <div class="accordion shadow-sm" id="accordionCursos">
+          <!-- Curso 1 -->
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#curso1">
+                Contabilidad de Inventarios (SENA)
+              </button>
+            </h2>
+            <div id="curso1" class="accordion-collapse collapse show" data-bs-parent="#accordionCursos">
+              <div class="accordion-body">
+                <p class="mb-1"><strong>Duración:</strong> 40 horas - 04/12/2014</p>
+                <p class="mb-2 text-muted">Centro de Comercio y Servicios - Regional Bolívar</p>
+                <div class="d-flex gap-2">
+                  <a href="contabilidad.pdf" download class="btn btn-sm btn-outline-primary"><i class="bi bi-download"></i> Descargar PDF</a>
+                  <a href="contabilidad.pdf" target="_blank" class="btn btn-sm btn-outline-secondary"><i class="bi bi-eye"></i> Ver Certificado</a>
+                </div>
               </div>
             </div>
-
-            <hr style="border:0; border-top:1px dashed var(--border-color); margin: 15px 0;">
-
-            <!-- Curso 2 (Con PDF) -->
-            <div class="item">
-              <div class="item-header">
-                <h3>Emprendimiento Empresarial</h3>
-                <span class="fecha">40 horas - 05/03/2015</span>
-              </div>
-              <p class="referencia-parentesco">Servicio Nacional de Aprendizaje (SENA) Regional Bolívar</p>
-              <p class="item-descripcion" style="margin-top: 5px;">
-                Registro SENA No. 910400911445CC1044930264E.
-              </p>
-              <div style="margin-top: 10px; display: flex; gap: 10px;">
-                <a href="emprendimiento.pdf" download="Certificado_Emprendimiento_Carlos_Paternina.pdf" class="btn-accion btn-descargar" style="text-decoration: none; display: inline-flex; font-size: 0.85rem; padding: 6px 14px;">
-                  📥 Descargar PDF
-                </a>
-                <a href="emprendimiento.pdf" target="_blank" class="btn-accion btn-tema" style="text-decoration: none; display: inline-flex; font-size: 0.85rem; padding: 6px 14px;">
-                  👁️ Ver Certificado
-                </a>
-              </div>
-            </div>
-
-            <hr style="border:0; border-top:1px dashed var(--border-color); margin: 15px 0;">
-
-            <!-- Curso 3 (Con PDF) -->
-            <div class="item">
-              <div class="item-header">
-                <h3>Básico Salud Ocupacional</h3>
-                <span class="fecha">40 horas - 13/04/2015</span>
-              </div>
-              <p class="referencia-parentesco">Servicio Nacional de Aprendizaje (SENA) - Regional Bolivar</p>
-              <p class="item-descripcion" style="margin-top: 5px;">
-                Registro SENA No. 930400940346CC1044930264C.
-              </p>
-              <div style="margin-top: 10px; display: flex; gap: 10px;">
-                <a href="salud_ocupacional.pdf" download="Certificado_Salud_Ocupacional_Carlos_Paternina.pdf" class="btn-accion btn-descargar" style="text-decoration: none; display: inline-flex; font-size: 0.85rem; padding: 6px 14px;">
-                  📥 Descargar PDF
-                </a>
-                <a href="salud_ocupacional.pdf" target="_blank" class="btn-accion btn-tema" style="text-decoration: none; display: inline-flex; font-size: 0.85rem; padding: 6px 14px;">
-                  👁️ Ver Certificado
-                </a>
-              </div>
-            </div>
-
-            <hr style="border:0; border-top:1px dashed var(--border-color); margin: 15px 0;">
-
-            <!-- CURSO ADICIONAL (SIN BOTONES DE PDF) -->
-            <div class="item">
-              <div class="item-header">
-                <h3>Mantenimiento de Computadores</h3>
-                <span class="fecha">60 horas - 2026</span>
-              </div>
-              <p class="referencia-parentesco">Servicio Nacional de Aprendizaje (SENA) - Regional Bolivar - En curso</p>
-              <p class="item-descripcion" style="margin-top: 5px;">
-                Formación en mantenimiento preventivo y correctivo de equipos de cómputo.
-              </p>
-            </div>
-
           </div>
-        </details>
-      </section>
-<!-- PESTAÑA 4: REFERENCIAS -->
-      <section id="referencias" class="tab-pane">
-        <h2 class="seccion-titulo">Referencias</h2>
 
-        <!-- Referencias Familiares (Mismo formato con desplegable <details>) -->
-        <details open>
-          <summary>👨‍👩‍👦 Referencias Familiares</summary>
-          <div class="desplegable-contenido">
-            
-            <div class="referencia-card">
-              <p class="referencia-nombre">Rosana Cantillo Diaz</p>
-              <p class="referencia-parentesco">Fisioterapeuta (Madre)</p>
-              <p class="referencia-detalles">Tel: +57 324 389 9075 - Email: rosanacantillod@gmail.com</p>
+          <!-- Curso 2 -->
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#curso2">
+                Emprendimiento Empresarial (SENA)
+              </button>
+            </h2>
+            <div id="curso2" class="accordion-collapse collapse" data-bs-parent="#accordionCursos">
+              <div class="accordion-body">
+                <p class="mb-1"><strong>Duración:</strong> 40 horas - 05/03/2015</p>
+                <p class="mb-2 text-muted">Centro Agroempresarial y Minero - Regional Bolívar</p>
+                <div class="d-flex gap-2">
+                  <a href="emprendimiento.pdf" download class="btn btn-sm btn-outline-primary"><i class="bi bi-download"></i> Descargar PDF</a>
+                  <a href="emprendimiento.pdf" target="_blank" class="btn btn-sm btn-outline-secondary"><i class="bi bi-eye"></i> Ver Certificado</a>
+                </div>
+              </div>
             </div>
-
-            <hr style="border:0; border-top:1px dashed var(--border-color); margin: 10px 0;">
-
-            <div class="referencia-card">
-              <p class="referencia-nombre">Jesus Paternina Cantillo</p>
-              <p class="referencia-parentesco">Ingeniero Químico (Hermano)</p>
-              <p class="referencia-detalles">Tel: +57 315 531 5631 - Email: jedapaca@gmail.com</p>
-            </div>
-
           </div>
-        </details>
 
-        <!-- Referencias Personales -->
-        <details>
-          <summary>🤝 Referencias Personales</summary>
-          <div class="desplegable-contenido">
-            
-            <div class="referencia-card">
-              <p class="referencia-nombre">Rosa Isabel Berdugo Diaz</p>
-              <p class="referencia-parentesco">Licenciada en Castellano</p>
-              <p class="referencia-detalles">Tel: +57 320 689 4339 - Email: rosaisabelbd@gmail.com</p>
+          <!-- Curso 3 -->
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#curso3">
+                Básico Salud Ocupacional (SENA)
+              </button>
+            </h2>
+            <div id="curso3" class="accordion-collapse collapse" data-bs-parent="#accordionCursos">
+              <div class="accordion-body">
+                <p class="mb-1"><strong>Duración:</strong> 40 horas - 13/04/2015</p>
+                <p class="mb-2 text-muted">Centro de Comercio y Servicios - Regional Bolívar</p>
+                <div class="d-flex gap-2">
+                  <a href="salud_ocupacional.pdf" download class="btn btn-sm btn-outline-primary"><i class="bi bi-download"></i> Descargar PDF</a>
+                  <a href="salud_ocupacional.pdf" target="_blank" class="btn btn-sm btn-outline-secondary"><i class="bi bi-eye"></i> Ver Certificado</a>
+                </div>
+              </div>
             </div>
-
-            <hr style="border:0; border-top:1px dashed var(--border-color); margin: 10px 0;">
-
-            <div class="referencia-card">
-              <p class="referencia-nombre">Ana Maria Barros Guardo</p>
-              <p class="referencia-parentesco">Auxiliar Contable</p>
-              <p class="referencia-detalles">Tel: +57 300 704 1098 - Email: anabg89@hotmail.com</p>
-            </div>
-
           </div>
-        </details>
-      </section>
+
+          <!-- Curso Adicional sin PDF -->
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#curso4">
+                Mantenimiento de Computadores
+              </button>
+            </h2>
+            <div id="curso4" class="accordion-collapse collapse" data-bs-parent="#accordionCursos">
+              <div class="accordion-body">
+                <p class="mb-1"><strong>Duración:</strong> 60 horas - 2026</p>
+                <p class="mb-0 text-muted">Formación práctica en diagnóstico y mantenimiento de hardware y software.</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- PESTAÑA 4: REFERENCIAS -->
+      <div class="tab-pane fade" id="referencias" role="tabpanel">
+        <h4 class="border-bottom pb-2 mb-4 text-primary"><i class="bi bi-people-fill me-2"></i>Referencias</h4>
+
+        <div class="accordion shadow-sm" id="accordionReferencias">
+          <!-- Familiares -->
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#refFam">
+                👨‍👩‍👦 Referencias Familiares
+              </button>
+            </h2>
+            <div id="refFam" class="accordion-collapse collapse show" data-bs-parent="#accordionReferencias">
+              <div class="accordion-body">
+                <div class="mb-3">
+                  <h6 class="fw-bold mb-0">Rosana Cantillo Diaz</h6>
+                  <small class="text-primary fw-semibold">Fisioterapeuta (Madre)</small>
+                  <p class="mb-0 text-muted">Tel: +57 3243899075 - Email: rosana.cantillo.diaz@gmail.com</p>
+                </div>
+                <hr>
+                <div>
+                  <h6 class="fw-bold mb-0">Jesus Paternina Cantillo</h6>
+                  <small class="text-primary fw-semibold">Ingeniero Químico (Hermano)</small>
+                  <p class="mb-0 text-muted">Tel: +57 3155315631 - Email: jedapaca@hotmail.com</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Personales -->
+          <div class="accordion-item">
+            <h2 class="accordion-header">
+              <button class="accordion-button collapsed fw-semibold" type="button" data-bs-toggle="collapse" data-bs-target="#refPers">
+                🤝 Referencias Personales
+              </button>
+            </h2>
+            <div id="refPers" class="accordion-collapse collapse" data-bs-parent="#accordionReferencias">
+              <div class="accordion-body">
+                <div class="mb-3">
+                  <h6 class="fw-bold mb-0">Rosa Isabel Berdugo Diaz</h6>
+                  <small class="text-primary fw-semibold">Licenciada en Castellano</small>
+                  <p class="mb-0 text-muted">Tel: +57 3206894339 - Email: rosaisabelbd@gmail.com</p>
+                </div>
+                <hr>
+                <div>
+                  <h6 class="fw-bold mb-0">Ana Maria Barros Guardo</h6>
+                  <small class="text-primary fw-semibold">Auxiliar Contable</small>
+                  <p class="mb-0 text-muted">Tel: +57 3007041098 - Email: anabarrosg@gmail.com</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- PESTAÑA 5: FORMULARIO DE CONTACTO -->
+      <div class="tab-pane fade" id="contacto" role="tabpanel">
+        <h4 class="border-bottom pb-2 mb-4 text-primary"><i class="bi bi-envelope-paper-fill me-2"></i>Formulario de Contacto</h4>
+
+        <div id="alertSuccess" class="alert alert-success d-none animate__animated animate__fadeIn" role="alert">
+          <i class="bi bi-check-circle-fill me-2"></i>¡Mensaje enviado correctamente! Me pondré en contacto contigo pronto.
+        </div>
+
+        <form id="formContacto" class="needs-validation" novalidate>
+          <div class="row g-3">
+            <div class="col-md-6">
+              <label for="nombreContacto" class="form-label fw-semibold">Nombre Completo *</label>
+              <input type="text" class="form-control" id="nombreContacto" required>
+              <div class="invalid-feedback">Por favor ingresa tu nombre.</div>
+            </div>
+
+            <div class="col-md-6">
+              <label for="emailContacto" class="form-label fw-semibold">Correo Electrónico *</label>
+              <input type="email" class="form-control" id="emailContacto" required>
+              <div class="invalid-feedback">Por favor ingresa un correo electrónico válido.</div>
+            </div>
+
+            <div class="col-12">
+              <label for="asuntoContacto" class="form-label fw-semibold">Asunto *</label>
+              <input type="text" class="form-control" id="asuntoContacto" required>
+              <div class="invalid-feedback">Por favor ingresa el asunto del mensaje.</div>
+            </div>
+
+            <div class="col-12">
+              <label for="mensajeContacto" class="form-label fw-semibold">Mensaje *</label>
+              <textarea class="form-control" id="mensajeContacto" rows="4" required></textarea>
+              <div class="invalid-feedback">El mensaje debe tener al menos 10 caracteres.</div>
+            </div>
+
+            <div class="col-12">
+              <button type="submit" class="btn btn-primary d-flex align-items-center gap-2">
+                <i class="bi bi-send-fill"></i> Enviar Mensaje
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
 
     </main>
 
   </div>
 
-  <!-- JavaScript Externo -->
+  <!-- SCRIPTS AL FINAL DEL BODY EN ORDEN CORRECTO -->
+  <!-- 1. jQuery -->
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <!-- 2. Bootstrap 5.3 JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/bootstrap.bundle.min.js"></script>
+  <!-- 3. Tu Script personalizado -->
   <script src="script.js"></script>
 </body>
 </html>
