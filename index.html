@@ -63,6 +63,7 @@
     <nav class="bg-body-tertiary border-bottom">
       <div class="nav nav-tabs nav-justified" id="cv-tabs" role="tablist">
         <button class="nav-link active fw-semibold" id="perfil-tab" data-bs-toggle="tab" data-bs-target="#perfil" type="button" role="tab">Perfil & Datos</button>
+        <button class="nav-link fw-semibold" id="experiencia-tab" data-bs-toggle="tab" data-bs-target="#experiencia" type="button" role="tab">Experiencia</button>
         <button class="nav-link fw-semibold" id="estudios-tab" data-bs-toggle="tab" data-bs-target="#estudios" type="button" role="tab">Estudios</button>
         <button class="nav-link fw-semibold" id="cursos-tab" data-bs-toggle="tab" data-bs-target="#cursos" type="button" role="tab">Cursos & Certificados</button>
         <button class="nav-link fw-semibold" id="referencias-tab" data-bs-toggle="tab" data-bs-target="#referencias" type="button" role="tab">Referencias</button>
@@ -91,7 +92,70 @@
           </ul>
         </div>
       </div>
+      <!-- PESTAÑA EXPERIENCIA PROFESIONAL (API CRUD) -->
+      <div class="tab-pane fade" id="experiencia" role="tabpanel">
+        <div class="d-flex justify-content-between align-items-center mb-4 border-bottom pb-2">
+        <h4 class="text-primary mb-0"><i class="bi bi-briefcase-fill me-2"></i>Experiencia Profesional</h4>
+        <button type="button" class="btn btn-primary" id="btnAgregarExp">
+        <i class="bi bi-plus-lg me-1"></i> Agregar Nueva
+        </button>
+        </div>
 
+        <!-- Contenedor donde se cargarán las experiencias desde la API -->
+        <div id="contenedorExperiencias" class="row g-3">
+          <div class="text-center py-4 text-muted" id="loadingExperiencias">
+            <div class="spinner-border text-primary" role="status"></div>
+            <p class="mt-2 mb-0">Cargando experiencias profesionales...</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- MODAL PARA CREAR / EDITAR EXPERIENCIA -->
+<div class="modal fade" id="modalExperiencia" aria-labelledby="modalExpLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title fw-bold" id="modalExpLabel">Gestionar Experiencia</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form id="formExperiencia">
+          <input type="hidden" id="expId">
+          <div class="mb-3">
+            <label for="expEmpresa" class="form-label fw-semibold">Empresa *</label>
+            <input type="text" class="form-control" id="expEmpresa" required>
+          </div>
+          <div class="mb-3">
+            <label for="expPuesto" class="form-label fw-semibold">Puesto / Cargo *</label>
+            <input type="text" class="form-control" id="expPuesto" required>
+          </div>
+          <div class="row">
+            <div class="col-md-6 mb-3">
+              <label for="expFechaInicio" class="form-label fw-semibold">Fecha Inicio *</label>
+              <input type="text" class="form-control" id="expFechaInicio" placeholder="Ej: Enero 2022" required>
+            </div>
+            <div class="col-md-6 mb-3">
+              <label for="expFechaFin" class="form-label fw-semibold">Fecha Fin</label>
+              <input type="text" class="form-control" id="expFechaFin" placeholder="Ej: Presente">
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="expDescripcion" class="form-label fw-semibold">Descripción *</label>
+            <textarea class="form-control" id="expDescripcion" rows="3" required></textarea>
+          </div>
+          <div class="mb-3">
+            <label for="expTecnologias" class="form-label fw-semibold">Tecnologías (separadas por coma)</label>
+            <input type="text" class="form-control" id="expTecnologias" placeholder="Ej: Node.js, Express, MongoDB">
+          </div>
+          <div class="modal-footer px-0 pb-0">
+            <button type="button" class="btn btn-secondary" id="btnCancelarExp" data-bs-dismiss="modal">Cancelar</button>
+            <button type="button" class="btn btn-primary" id="btnGuardarExp">Guardar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
       <!-- PESTAÑA 2: FORMACIÓN ACADÉMICA -->
       <div class="tab-pane fade" id="estudios" role="tabpanel">
         <h4 class="border-bottom pb-2 mb-4 text-primary"><i class="bi bi-journal-bookmark-fill me-2"></i>Estudios Realizados</h4>
