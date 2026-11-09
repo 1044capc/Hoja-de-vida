@@ -1,7 +1,7 @@
 $(document).ready(function() {
 
   // --- CONFIGURACIÓN DE LA API ---
-  const API_URL = 'http://localhost:5000/api/experiencias';
+  const API_URL = 'https://hoja-de-vida-f6af.onrender.com/api/experiencias';
 
   // --- 1. CARGAR Y RENDERIZAR EXPERIENCIAS DESDE MONGODB ---
   function cargarExperiencias() {
